@@ -29,10 +29,40 @@ let Seattle = {
   cookiesPerHour: [],
   totalDailyCookies: 0,
   // Determine per hour open, how many customers to expect?
-};
+  //methods
 
-function getRandomNumberOfCustomersGivenARange(minCustomers) {
-  return
+  getCustomersPerHour: function () {
+    for (let index = 0; index < biznessHours.length; index++) {
+      this.customersPerHour.push(
+        getRandomNumberOfCustomersGivenARange(
+          this.minCustomers,
+          this.maxCustomers
+        )); //pass;
+    }
+    // lets see if we r even close. lets add some debug.... string literal
+    console.log("load up the customers...");
+  }
+};
+    getCookiesSoldPerHour: function (){
+        totalDailyCookies = 0;
+        this.getCustomersPerHour();
+
+        for (let index = 0; index < this.customersPerHour.length; index++){
+            
+            let totalDailyCookies = Math.floor(this.customersPerHour[index] * this.avgCookieSale);
+    }
+
+
+function getRandomNumberOfCustomersGivenARange(minCustomers, maxCustomers) {
+  return (
+    Math.floor(Math.random() * (maxCustomers - minCustomers + 1)) + minCustomers
+  ); // IF WE GET 0 Start a mincustomers
+}
+
+//call the method
+Seattle.getCustomersPerHour(); // should load array
+for (let index = 0; index < Seattle.customersPerHour.length; index++) {
+  console.log(customersPerHour[index]);
 }
 
 // let tokyo = {
